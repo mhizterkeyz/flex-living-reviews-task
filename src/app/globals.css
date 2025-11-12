@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fafafa;
+  --foreground: #1a1a1a;
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+  --border: #e5e5e5;
+  --accent: #059669;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Force light mode - dark mode disabled */
+html,
+html.light {
+  color-scheme: light !important;
+}
+
+html.dark {
+  color-scheme: light !important;
+}
+
+/* Override any dark mode styles */
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: light !important;
+  }
+}
+
+/* Force light mode - disable all dark mode styles */
+html,
+html.light,
+html.dark {
+  /* Override any dark mode text colors */
+  --tw-text-opacity: 1;
+}
+
+/* Global override for dark mode text classes - works regardless of html class */
+[class*="dark:text-white"],
+[class*="dark:text-gray-100"],
+[class*="dark:text-gray-200"],
+[class*="dark:text-gray-300"],
+[class*="dark:text-gray-400"] {
+  color: #1a1a1a !important;
+}
+
+[class*="dark:text-gray-500"],
+[class*="dark:text-gray-600"] {
+  color: #737373 !important;
+}
+
+[class*="dark:text-gray-700"],
+[class*="dark:text-gray-800"],
+[class*="dark:text-gray-900"] {
+  color: #1a1a1a !important;
+}
+
+/* Override dark mode backgrounds - works regardless of html class */
+[class*="dark:bg-gray-900"],
+[class*="dark:bg-gray-800"],
+[class*="dark:bg-gray-950"],
+[class*="dark:bg-\\[\\#0f0f0f\\]"],
+[class*="dark:bg-\\[\\#1a1a1a\\]"] {
+  background-color: #ffffff !important;
+}
+
+[class*="dark:bg-gray-700"],
+[class*="dark:bg-gray-800/50"],
+[class*="dark:bg-\\[\\#262626\\]"] {
+  background-color: #f5f5f5 !important;
+}
+
+/* Override dark mode borders */
+[class*="dark:border-gray-800"],
+[class*="dark:border-gray-700"] {
+  border-color: #e5e5e5 !important;
+}
+
+body {
+  background: var(--background) !important;
+  color: var(--foreground) !important;
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Force all text to be visible on light background */
+html h1,
+html h2,
+html h3,
+html h4,
+html h5,
+html h6,
+html p,
+html span,
+html div,
+html button,
+html label {
+  color: inherit;
+}
+
+/* Ensure headings are dark */
+html h1:not([class*="text-"]),
+html h2:not([class*="text-"]),
+html h3:not([class*="text-"]) {
+  color: #1a1a1a !important;
+}
+
+/* Cursor pointer for all interactive elements */
+button,
+a,
+[role="button"],
+[onclick],
+input[type="button"],
+input[type="submit"],
+select {
+  cursor: pointer;
+}
+
+/* Ensure hover text color works on buttons */
+button:hover.text-white,
+button.hover\:text-white:hover {
+  color: white !important;
+}
